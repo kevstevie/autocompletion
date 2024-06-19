@@ -4,6 +4,16 @@ import java.util.List;
 
 public class Elements {
 
+    private Elements() {
+
+    }
+
+    private static final Elements instance = new Elements();
+
+    public static Elements getInstance() {
+        return instance;
+    }
+
     private final List<String> firstConsonants = List.of(
             "ㄱ", "ㄲ", "ㄴ", "ㄷ", "ㄸ", "ㄹ", "ㅁ", "ㅂ",
             "ㅃ", "ㅅ", "ㅆ", "ㅇ", "ㅈ", "ㅉ", "ㅊ", "ㅋ", "ㅌ", "ㅍ", "ㅎ");
@@ -26,5 +36,17 @@ public class Elements {
 
     public String getLastConsonantAt(final int index) {
         return lastConsonants.get(index);
+    }
+
+    public int getIndexOfFirstConsonant(final String element) {
+        return firstConsonants.indexOf(element);
+    }
+
+    public int getIndexOfMiddleVowel(final String element) {
+        return middleVowels.indexOf(element);
+    }
+
+    public int getIndexOfLastConsonant(final String element) {
+        return lastConsonants.indexOf(element);
     }
 }
