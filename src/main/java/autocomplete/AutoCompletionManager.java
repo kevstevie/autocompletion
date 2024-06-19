@@ -19,12 +19,12 @@ public class AutoCompletionManager {
     public void save(Collection<String> words) {
         for (String word : words) {
             String decomposed = wordComposer.decompose(word);
-            wordRepository.save(new WordWithDecomposed(decomposed, word));
+            wordRepository.save(new AutoCompletionInfo(decomposed, word));
         }
     }
 
-    public List<String> find(String decomposed) {
+    public List<String> find(String word) {
+        String decomposed = wordComposer.decompose(word);
         return wordRepository.find(decomposed);
     }
-
 }

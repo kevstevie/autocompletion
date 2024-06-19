@@ -5,10 +5,10 @@ import java.util.List;
 
 public class MemoryWordRepository implements WordRepository {
 
-    private final List<WordWithDecomposed> words = new ArrayList<>();
+    private final List<AutoCompletionInfo> words = new ArrayList<>();
 
     @Override
-    public void save(WordWithDecomposed word) {
+    public void save(AutoCompletionInfo word) {
         words.add(word);
     }
 
@@ -16,7 +16,7 @@ public class MemoryWordRepository implements WordRepository {
     public List<String> find(String decomposed) {
         return words.stream()
                     .filter(word -> word.contains(decomposed))
-                    .map(WordWithDecomposed::word)
+                    .map(AutoCompletionInfo::word)
                     .toList();
     }
 }

@@ -23,7 +23,7 @@ class AutoCompletionManagerTest {
 
         System.out.println("l.size() = " + l.size());
 
-        List<String> strings = autoCompletionManager.find("ㄹㅣ");
+        List<String> strings = autoCompletionManager.find("리");
         System.out.println("strings = " + strings);
     }
 

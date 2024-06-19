@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface WordRepository {
 
-    void save(WordWithDecomposed word);
+    void save(AutoCompletionInfo word);
 
     List<String> find(String decomposed);
 

@@ -1,11 +1,11 @@
 package autocomplete;
 
-public class WordWithDecomposed {
+public class AutoCompletionInfo {
 
     private final String decomposed;
     private final String word;
 
-    public WordWithDecomposed(String decomposed, String word) {
+    public AutoCompletionInfo(String decomposed, String word) {
         this.decomposed = decomposed;
         this.word = word;
     }
