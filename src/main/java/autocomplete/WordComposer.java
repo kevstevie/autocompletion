@@ -1,7 +1,5 @@
 package autocomplete;
 
-import java.util.List;
-
 public class WordComposer {
 
     private static final char KOREAN_UNICODE = 0xAC00;
@@ -9,22 +7,6 @@ public class WordComposer {
     private static final int FIRST_CONSONANT_MULTIPLIER = 21;
 
     private final Elements elements = Elements.getInstance();
-
-    public String compose(final List<Character> decomposed) {
-        return String.valueOf(composeKoreanLetter(decomposed));
-    }
-
-    private char composeKoreanLetter(final List<Character> chs) {
-        final var firstIndex = elements.getIndexOfFirstConsonant(String.valueOf(chs.get(0)));
-        final var secondIndex = elements.getIndexOfMiddleVowel(String.valueOf(chs.get(1)));
-
-        int letterWithoutLastConsonant = (firstIndex * FIRST_CONSONANT_MULTIPLIER + secondIndex * VOWEL_MULTIPLIER) + KOREAN_UNICODE;
-        if (chs.size() == 3) {
-            final var thirdIndex = elements.getIndexOfLastConsonant(String.valueOf(chs.get(2)));
-            return (char) (letterWithoutLastConsonant + thirdIndex);
-        }
-        return (char) letterWithoutLastConsonant;
-    }
 
     public String decompose(final String word) {
         final var result = new StringBuilder();

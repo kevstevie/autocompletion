@@ -2,7 +2,6 @@ package autocomplete;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class WordComposerTest {
@@ -29,27 +28,6 @@ class WordComposerTest {
 
         assertThat(result).isEqualTo("ㅋㅝ");
     }
-
-    @Test
-    void 문자열_합성() {
-        final var chs = List.of('ㄱ', 'ㅏ', 'ㄱ');
-        final var wordComposer = new WordComposer();
-
-        final var result = wordComposer.compose(chs);
-
-        assertThat(result).isEqualTo("각");
-    }
-
-    @Test
-    void 문자열_합성2() {
-        final var chs = List.of('ㄱ', 'ㅏ');
-        final var wordComposer = new WordComposer();
-
-        final var result = wordComposer.compose(chs);
-
-        assertThat(result).isEqualTo("가");
-    }
-
 
     @Test
     void 단어_음성_분리() {
