@@ -1,7 +1,5 @@
 package autocomplete;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class WordComposer {
@@ -28,30 +26,38 @@ public class WordComposer {
         return (char) letterWithoutLastConsonant;
     }
 
-    public List<String> decompose(final String word) {
-        final var result = new ArrayList<String>();
+    public String decompose(final String word) {
+        final var result = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
-            List<String> letter = decomposeKoreanLetter(word.charAt(i));
-            result.addAll(letter);
+            char letter = word.charAt(i);
+
+            if (letter == ' ') {
+                continue;
+            }
+            if (letter >= '가' && letter <= '힣') {
+                result.append(decomposeKoreanLetter(letter));
+                continue;
+            }
+            result.append(letter);
         }
 
-        return Collections.unmodifiableList(result);
+        return result.toString();
     }
 
-    public List<String> decomposeKoreanLetter(char ch) {
-        final var result = new ArrayList<String>();
+    public String decomposeKoreanLetter(char ch) {
+        final var result = new StringBuilder();
         final var unicode = ch - KOREAN_UNICODE;
 
         int firstConsonantValue = (unicode) / VOWEL_MULTIPLIER / FIRST_CONSONANT_MULTIPLIER;
         int middleVowelValue = (unicode) / VOWEL_MULTIPLIER % FIRST_CONSONANT_MULTIPLIER;
         int lastConsonantValue = (unicode) % VOWEL_MULTIPLIER;
 
-        result.add(elements.getFirstConsonantAt(firstConsonantValue));
-        result.add(elements.getMiddleVowelAt(middleVowelValue));
+        result.append(elements.getFirstConsonantAt(firstConsonantValue));
+        result.append(elements.getMiddleVowelAt(middleVowelValue));
         if (lastConsonantValue != 0) {
-            result.add(elements.getLastConsonantAt(lastConsonantValue));
+            result.append(elements.getLastConsonantAt(lastConsonantValue));
         }
 
-        return result;
+        return result.toString();
     }
 }

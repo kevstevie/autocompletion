@@ -4,8 +4,8 @@ import java.util.List;
 
 public interface WordRepository {
 
-    void save(String... word);
+    void save(WordWithDecomposed word);
 
-    List<String> find(char[] decompsed);
+    List<String> find(String decomposed);
 
 }
