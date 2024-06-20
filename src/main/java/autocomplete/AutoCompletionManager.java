@@ -25,7 +25,15 @@ public class AutoCompletionManager<T> {
         return wordRepository.findStartWith(word);
     }
 
+    public List<String> findStartWith(String word, int limit) {
+        return wordRepository.findStartWith(word);
+    }
+
     public List<String> findByConsonants(String consonants) {
+        return wordRepository.findByConsonants(consonants);
+    }
+
+    public List<String> findByConsonants(String consonants, int limit) {
         return wordRepository.findByConsonants(consonants);
     }
 

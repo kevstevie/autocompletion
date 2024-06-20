@@ -24,9 +24,28 @@ public class MemoryWordRepository extends WordRepository<DefaultAutoCompletionDa
     }
 
     @Override
+    public List<String> findStartWith(String search, int limit) {
+        String decomposed = wordComposer.decompose(search);
+        return words.stream()
+                    .filter(word -> word.startWith(decomposed))
+                    .limit(limit)
+                    .map(DefaultAutoCompletionData::word)
+                    .toList();
+    }
+
+    @Override
     public List<String> findByConsonants(String consonants) {
         return words.stream()
                     .filter(word -> word.matchConsonants(consonants))
+                    .map(DefaultAutoCompletionData::word)
+                    .toList();
+    }
+
+    @Override
+    public List<String> findByConsonants(String consonants, int limit) {
+        return words.stream()
+                    .filter(word -> word.matchConsonants(consonants))
+                    .limit(limit)
                     .map(DefaultAutoCompletionData::word)
                     .toList();
     }

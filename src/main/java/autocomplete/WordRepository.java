@@ -10,7 +10,11 @@ public abstract class WordRepository<T> {
 
     public abstract List<String> findStartWith(String decomposed);
 
+    public abstract List<String> findStartWith(String decomposed, int limit);
+
     public abstract List<String> findByConsonants(String consonants);
+
+    public abstract List<String> findByConsonants(String consonants, int limit);
 
     public abstract void clear();
 }
