@@ -10,7 +10,7 @@ public class MemoryWordRepository extends WordRepository<DefaultAutoCompletionDa
     @Override
     public void save(DefaultAutoCompletionData data) {
         String decomposed = wordComposer.decompose(data.word());
-        words.add(new DefaultAutoCompletionData(decomposed, data.word()));
+        words.add(data.setDecomposed(decomposed));
     }
 
     @Override

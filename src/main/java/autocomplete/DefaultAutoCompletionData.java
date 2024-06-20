@@ -9,17 +9,13 @@ public class DefaultAutoCompletionData {
         this.word = word;
     }
 
-    public DefaultAutoCompletionData(String decomposed, String word) {
-        this.decomposed = decomposed;
-        this.word = word;
-    }
-
-    public boolean contains(String decomposed) {
-        return this.decomposed.contains(decomposed);
-    }
-
     public boolean startWith(String decomposed) {
         return this.decomposed.startsWith(decomposed);
+    }
+
+    public DefaultAutoCompletionData setDecomposed(String decomposed) {
+        this.decomposed = decomposed;
+        return this;
     }
 
     public String decomposed() {
