@@ -10,7 +10,8 @@ public class MemoryWordRepository extends WordRepository<DefaultAutoCompletionDa
     @Override
     public void save(DefaultAutoCompletionData data) {
         String decomposed = wordComposer.decompose(data.word());
-        words.add(data.setDecomposed(decomposed));
+        String consonants = wordComposer.extractConsonants(data.word());
+        words.add(data.setDecomposed(decomposed).setConsonants(consonants));
     }
 
     @Override
@@ -23,13 +24,11 @@ public class MemoryWordRepository extends WordRepository<DefaultAutoCompletionDa
     }
 
     @Override
-    public void saveConsonants(DefaultAutoCompletionData data) {
-
-    }
-
-    @Override
     public List<String> findByConsonants(String consonants) {
-        return null;
+        return words.stream()
+                    .filter(word -> word.matchConsonants(consonants))
+                    .map(DefaultAutoCompletionData::word)
+                    .toList();
     }
 
     @Override

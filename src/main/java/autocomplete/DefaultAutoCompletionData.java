@@ -14,6 +14,10 @@ public class DefaultAutoCompletionData {
         return this.decomposed.startsWith(decomposed);
     }
 
+    public boolean matchConsonants(String consonants) {
+        return this.consonants.contains(consonants);
+    }
+
     public DefaultAutoCompletionData setDecomposed(String decomposed) {
         this.decomposed = decomposed;
         return this;

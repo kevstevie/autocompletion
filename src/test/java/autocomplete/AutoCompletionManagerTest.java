@@ -15,7 +15,7 @@ class AutoCompletionManagerTest {
 
     List<String> dummy = List.of(
             "겪다", "격기", "고라니", "골목", "나라", "다리미", "달빛", "달리기", "앉아", "안기다",
-            "아싸", "앗다", "위기", "울다", "무서움", "뭐라고"
+            "아싸", "앗다", "위기", "울다", "무서움", "뭐라고", "간다", "가다", "길다"
     );
     List<DefaultAutoCompletionData> l = new ArrayList<>();
 
@@ -73,5 +73,26 @@ class AutoCompletionManagerTest {
         List<String> result = autoCompletionManager.findStartWith("무");
 
         assertThat(result).hasSize(2);
+    }
+
+    @Test
+    void 초성_찾기() {
+        List<String> result = autoCompletionManager.findByConsonants("ㄷㄹ");
+
+        assertThat(result).hasSize(2);
+    }
+
+    @Test
+    void 초성_찾기2() {
+        List<String> result = autoCompletionManager.findByConsonants("ㄷㄹㄱ");
+
+        assertThat(result).hasSize(1);
+    }
+
+    @Test
+    void 초성_찾기3() {
+        List<String> result = autoCompletionManager.findByConsonants("ㄱㄷ");
+
+        assertThat(result).hasSize(5);
     }
 }
