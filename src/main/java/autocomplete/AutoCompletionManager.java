@@ -3,28 +3,25 @@ package autocomplete;
 import java.util.Collection;
 import java.util.List;
 
-public class AutoCompletionManager {
+public class AutoCompletionManager<T> {
 
-    private final WordRepository wordRepository;
-    private final WordComposer wordComposer = new WordComposer();
+    private final WordRepository<T> wordRepository;
 
-    public AutoCompletionManager(WordRepository wordRepository) {
+    public AutoCompletionManager(WordRepository<T> wordRepository) {
         this.wordRepository = wordRepository;
     }
 
-    public static AutoCompletionManager useMemory() {
-        return new AutoCompletionManager(new MemoryWordRepository());
+    public static AutoCompletionManager<DefaultAutoCompletionData> useMemory() {
+        return new AutoCompletionManager<>(new MemoryWordRepository());
     }
 
-    public void save(Collection<String> words) {
-        for (String word : words) {
-            String decomposed = wordComposer.decompose(word);
-            wordRepository.save(new AutoCompletionInfo(decomposed, word));
+    public void save(Collection<T> dataCollection) {
+        for (T data : dataCollection) {
+            wordRepository.save(data);
         }
     }
 
-    public List<String> find(String word) {
-        String decomposed = wordComposer.decompose(word);
-        return wordRepository.find(decomposed);
+    public List<String> findStartWith(String word) {
+        return wordRepository.findStartWith(word);
     }
 }

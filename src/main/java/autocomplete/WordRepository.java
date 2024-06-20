@@ -2,10 +2,12 @@ package autocomplete;
 
 import java.util.List;
 
-public interface WordRepository {
+public abstract class WordRepository<T> {
 
-    void save(AutoCompletionInfo word);
+    protected final WordComposer wordComposer = new WordComposer();
 
-    List<String> find(String decomposed);
+    public abstract void save(T data);
+
+    public abstract List<String> findStartWith(String decomposed);
 
 }

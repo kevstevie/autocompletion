@@ -1,17 +1,25 @@
 package autocomplete;
 
-public class AutoCompletionInfo {
+public class DefaultAutoCompletionData {
 
-    private final String decomposed;
     private final String word;
+    private String decomposed;
 
-    public AutoCompletionInfo(String decomposed, String word) {
+    public DefaultAutoCompletionData(String word) {
+        this.word = word;
+    }
+
+    public DefaultAutoCompletionData(String decomposed, String word) {
         this.decomposed = decomposed;
         this.word = word;
     }
 
     public boolean contains(String decomposed) {
         return this.decomposed.contains(decomposed);
+    }
+
+    public boolean startWith(String decomposed) {
+        return this.decomposed.startsWith(decomposed);
     }
 
     public String decomposed() {

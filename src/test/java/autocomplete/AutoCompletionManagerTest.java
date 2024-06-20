@@ -5,9 +5,10 @@ import org.junit.jupiter.api.Test;
 
 class AutoCompletionManagerTest {
 
-    private final AutoCompletionManager autoCompletionManager = AutoCompletionManager.useMemory();
+    private final AutoCompletionManager<DefaultAutoCompletionData> autoCompletionManager = AutoCompletionManager.useMemory();
 
-    List<String> l = List.of("스마트폰 케이스", "무선 이어폰", "전기면도기", "블루투스 스피커", "휴대용 충전기", "스마트워치", "디지털 손목 시계", "유기농 샴푸", "카메라 드론", "스마트 LED 조명", "보온 텀블러", "전기차 충전기", "핸드폰 홀더", "휴대용 스팀 다리미", "휴대용 가습기", "칼세트", "수면 마스크", "헬스 트레킹 슈즈", "캠핑 텐트", "야외용 가구 세트", "바디 블러셔", "화장품 세트", "보습 핸드크림", "다이어트 보조제", "헤어 드라이기",
+    List<String> dummy = List.of("스마트폰 케이스", "무선 이어폰", "전기면도기", "블루투스 스피커", "휴대용 충전기", "스마트워치", "디지털 손목 시계", "유기농 샴푸", "카메라 드론", "스마트 LED 조명", "보온 텀블러", "전기차 충전기", "핸드폰 홀더", "휴대용 스팀 다리미", "휴대용 가습기", "칼세트", "수면 마스크", "헬스 트레킹 슈즈", "캠핑 텐트", "야외용 가구 세트", "바디 블러셔", "화장품 세트", "보습 핸드크림", "다이어트 보조제",
+            "헤어 드라이기",
             "바디 보드", "수영 경력 수영복", "스키 장비", "등산 모자", "야외 라이프재킷", "야외 아기 유모차", "화이트 골프 공", "야외용 스포츠 구스", "골프 클럽 세트", "자전거 안전 장비", "자전거 헬멧", "캠핑 용품", "스노클링 장비", "피크닉 매트", "휴대용 캠핑 스토브", "휴대용 태양광 충전기", "보트 보트", "서핑 보드", "다이어트 식품 세트", "요가 매트", "운동용 손목 보호대", "헬스 클럽 멤버십", "필라테스 볼", "스포츠 드라이브 스루",
             "자전거 고급 잠금장치", "휴대용 라디오", "골프용 GPS 시계", "낚시 장비 세트", "수영 고글", "스케이트보드", "보호용 스쿠터 헬멧", "서핑 슈트", "캠핑용 식기 세트", "야외 바비큐 그릴", "야구 글러브", "배드민턴 라켓 세트", "테니스 공", "탁구 테이블", "등산용 물병", "자전거 라이트", "체력 단련용 운동기구", "야외 사진기", "낚시 로드", "스포츠 안전 조끼", "자동차 세차 용품", "자동차 차량용 가전 제품", "평생 구독 플랜", "장난감 공예",
             "DIY 가구 제작 키트", "포장된 펫 음식", "펫 침대", "펫 장난감 세트", "전기 자동차 충전기", "핸드폰 블루투스 이어폰", "스마트 LED 조명", "휴대용 보온 텀블러", "디지털 무선 도어락", "휴대용 스팀 다리미", "무선 충전 패드", "유기농 헤어 샴푸", "카메라 드론", "휴대용 가습기", "전기 면도기", "헬스 트레킹 슈즈", "캠핑 텐트", "야외용 가구 세트", "화장품 세트", "보습 핸드크림", "다이어트 보조제", "헤어 드라이기", "바디 보드",
@@ -19,12 +20,16 @@ class AutoCompletionManagerTest {
 
     @Test
     void a() {
+
+        List<DefaultAutoCompletionData> l = dummy.stream()
+                                                 .map(d -> new DefaultAutoCompletionData(d))
+                                                 .toList();
+
         autoCompletionManager.save(l);
 
         System.out.println("l.size() = " + l.size());
 
-        List<String> strings = autoCompletionManager.find("리");
+        List<String> strings = autoCompletionManager.findStartWith("고");
         System.out.println("strings = " + strings);
     }
-
 }
