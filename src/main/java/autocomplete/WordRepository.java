@@ -10,4 +10,5 @@ public abstract class WordRepository<T> {
 
     public abstract List<String> findStartWith(String decomposed);
 
+    public abstract void clear();
 }

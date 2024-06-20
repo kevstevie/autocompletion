@@ -26,7 +26,7 @@ class WordComposerTest {
     void 이중_모음_글자_분리() {
         final var result = wordComposer.decomposeKoreanLetter('쿼');
 
-        assertThat(result).isEqualTo("ㅋㅝ");
+        assertThat(result).isEqualTo("ㅋㅜㅓ");
     }
 
     @Test

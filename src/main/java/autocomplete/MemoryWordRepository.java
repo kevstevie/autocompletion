@@ -21,4 +21,9 @@ public class MemoryWordRepository extends WordRepository<DefaultAutoCompletionDa
                     .map(DefaultAutoCompletionData::word)
                     .toList();
     }
+
+    @Override
+    public void clear() {
+        words.clear();
+    }
 }

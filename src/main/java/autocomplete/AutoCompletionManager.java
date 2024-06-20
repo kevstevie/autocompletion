@@ -24,4 +24,8 @@ public class AutoCompletionManager<T> {
     public List<String> findStartWith(String word) {
         return wordRepository.findStartWith(word);
     }
+
+    public void clear() {
+        wordRepository.clear();
+    }
 }
