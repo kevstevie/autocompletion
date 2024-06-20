@@ -56,4 +56,25 @@ class WordComposerTest {
 
         assertThat(result).isEqualTo("ㄱㅏㄹㅏㄱ");
     }
+
+    @Test
+    void 초성_추출() {
+        final var result = wordComposer.extractConsonants("가나라다");
+
+        assertThat(result).isEqualTo("ㄱㄴㄹㄷ");
+    }
+
+    @Test
+    void 초성_추출2() {
+        final var result = wordComposer.extractConsonants("물고기");
+
+        assertThat(result).isEqualTo("ㅁㄱㄱ");
+    }
+
+    @Test
+    void 초성_추출3() {
+        final var result = wordComposer.extractConsonants("쌍쌍바");
+
+        assertThat(result).isEqualTo("ㅅㅅㅅㅅㅂ");
+    }
 }

@@ -4,6 +4,7 @@ public class DefaultAutoCompletionData {
 
     private final String word;
     private String decomposed;
+    private String consonants;
 
     public DefaultAutoCompletionData(String word) {
         this.word = word;
@@ -15,6 +16,11 @@ public class DefaultAutoCompletionData {
 
     public DefaultAutoCompletionData setDecomposed(String decomposed) {
         this.decomposed = decomposed;
+        return this;
+    }
+
+    public DefaultAutoCompletionData setConsonants(String consonants) {
+        this.consonants = consonants;
         return this;
     }
 

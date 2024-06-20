@@ -23,6 +23,16 @@ public class MemoryWordRepository extends WordRepository<DefaultAutoCompletionDa
     }
 
     @Override
+    public void saveConsonants(DefaultAutoCompletionData data) {
+
+    }
+
+    @Override
+    public List<String> findByConsonants(String consonants) {
+        return null;
+    }
+
+    @Override
     public void clear() {
         words.clear();
     }
