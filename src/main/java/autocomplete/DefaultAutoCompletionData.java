@@ -10,24 +10,6 @@ public class DefaultAutoCompletionData {
         this.word = word;
     }
 
-    public boolean startWith(String decomposed) {
-        return this.decomposed.startsWith(decomposed);
-    }
-
-    public boolean matchConsonants(String consonants) {
-        return this.consonants.contains(consonants);
-    }
-
-    public DefaultAutoCompletionData setDecomposed(String decomposed) {
-        this.decomposed = decomposed;
-        return this;
-    }
-
-    public DefaultAutoCompletionData setConsonants(String consonants) {
-        this.consonants = consonants;
-        return this;
-    }
-
     public String decomposed() {
         return decomposed;
     }

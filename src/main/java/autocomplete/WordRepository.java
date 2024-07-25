@@ -1,20 +1,8 @@
 package autocomplete;
 
-import java.util.List;
+public interface WordRepository<T> {
 
-public abstract class WordRepository<T> {
+    void save(T data);
 
-    protected final WordComposer wordComposer = new WordComposer();
-
-    public abstract void save(T data);
-
-    public abstract List<String> findStartWith(String decomposed);
-
-    public abstract List<String> findStartWith(String decomposed, int limit);
-
-    public abstract List<String> findByConsonants(String consonants);
-
-    public abstract List<String> findByConsonants(String consonants, int limit);
-
-    public abstract void clear();
+    void clear();
 }

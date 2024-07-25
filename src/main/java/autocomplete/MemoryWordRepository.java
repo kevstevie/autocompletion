@@ -1,53 +1,15 @@
 package autocomplete;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-public class MemoryWordRepository extends WordRepository<DefaultAutoCompletionData> {
+public class MemoryWordRepository implements WordRepository<DefaultAutoCompletionData> {
 
-    private final List<DefaultAutoCompletionData> words = new ArrayList<>();
+    private final Set<DefaultAutoCompletionData> words = new HashSet<>();
 
     @Override
     public void save(DefaultAutoCompletionData data) {
-        String decomposed = wordComposer.decompose(data.word());
-        String consonants = wordComposer.extractConsonants(data.word());
-        words.add(data.setDecomposed(decomposed).setConsonants(consonants));
-    }
-
-    @Override
-    public List<String> findStartWith(String search) {
-        String decomposed = wordComposer.decompose(search);
-        return words.stream()
-                    .filter(word -> word.startWith(decomposed))
-                    .map(DefaultAutoCompletionData::word)
-                    .toList();
-    }
-
-    @Override
-    public List<String> findStartWith(String search, int limit) {
-        String decomposed = wordComposer.decompose(search);
-        return words.stream()
-                    .filter(word -> word.startWith(decomposed))
-                    .limit(limit)
-                    .map(DefaultAutoCompletionData::word)
-                    .toList();
-    }
-
-    @Override
-    public List<String> findByConsonants(String consonants) {
-        return words.stream()
-                    .filter(word -> word.matchConsonants(consonants))
-                    .map(DefaultAutoCompletionData::word)
-                    .toList();
-    }
-
-    @Override
-    public List<String> findByConsonants(String consonants, int limit) {
-        return words.stream()
-                    .filter(word -> word.matchConsonants(consonants))
-                    .limit(limit)
-                    .map(DefaultAutoCompletionData::word)
-                    .toList();
+        words.add(data);
     }
 
     @Override
