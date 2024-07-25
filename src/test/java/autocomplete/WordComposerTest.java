@@ -31,28 +31,28 @@ class WordComposerTest {
 
     @Test
     void 단어_음성_분리() {
-        final var result = wordComposer.decompose("감자");
+        final var result = wordComposer.extractElements("감자");
 
         assertThat(result).isEqualTo("ㄱㅏㅁㅈㅏ");
     }
 
     @Test
     void 단어_음성_분리_2() {
-        final var result = wordComposer.decompose("나락");
+        final var result = wordComposer.extractElements("나락");
 
         assertThat(result).isEqualTo("ㄴㅏㄹㅏㄱ");
     }
 
     @Test
     void 영어_분리() {
-        final var result = wordComposer.decompose("asda");
+        final var result = wordComposer.extractElements("asda");
 
         assertThat(result).isEqualTo("asda");
     }
 
     @Test
     void 띄어쓰기_생략() {
-        final var result = wordComposer.decompose("가 락");
+        final var result = wordComposer.extractElements("가 락");
 
         assertThat(result).isEqualTo("ㄱㅏㄹㅏㄱ");
     }

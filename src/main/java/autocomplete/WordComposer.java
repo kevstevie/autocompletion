@@ -10,7 +10,7 @@ public class WordComposer {
 
     private final Elements elements = Elements.getInstance();
 
-    public String decompose(String word) {
+    public String extractElements(String word) {
         return iterateFunction(word, this::decomposeKoreanLetter);
     }
 
